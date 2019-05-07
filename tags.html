@@ -56,6 +56,9 @@ header-img: "img/tag-bg.jpg"
 				        <h3 class="post-subtitle">
 				            {{ post.subtitle }}
 				        </h3>
+                        <h3 class="post-subtitle">
+                            {{ post.date | date: "%Y-%m-%d" }}
+				        </h3>
 				        {% endif %}
 				    </a>
 				    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->

@@ -1,6 +1,6 @@
 # Site settings
 locale: "zh_CN"
-title: 梦尽头的博客
+title: 梦尽头
 SEOTitle: 梦尽头的博客 | End of Dream's Blog
 header-img: img/post-bg-desk.jpg
 email: lzw1140607841@gmail.com
@@ -12,7 +12,7 @@ github_repo: "https://github.com/lzweife/lzweife.github.io.git" # you code repos
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "凡人皆需侍奉"
+sidebar-about-description: "凡人皆有一死，凡人皆需侍奉"
 sidebar-avatar: /img/sidebar_avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 

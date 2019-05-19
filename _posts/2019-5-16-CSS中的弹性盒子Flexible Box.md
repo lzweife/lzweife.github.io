@@ -39,7 +39,7 @@ tags:
 - `flex-flow` 属性是 `flex-direction` 和 `flex-wrap` 属性的简写，决定弹性项目如何排布。
 
 #### 行`Line`
-根据 ``flex-wrap` 属性，弹性项目可以排布在单个行或者多个行中。此属性控制侧轴的方向和新行排列的方向。
+根据 `flex-wrap` 属性，弹性项目可以排布在单个行或者多个行中。此属性控制侧轴的方向和新行排列的方向。
 
 #### 尺寸`Dimension`
 根据弹性容器的主轴与侧轴，弹性项目的宽和高中，对应主轴的称为**主轴尺寸(main size)** ，对应侧轴的称为 **侧轴尺寸(cross size)**。
@@ -63,12 +63,43 @@ display : inline-flex
 - `float` 与 `clear` 对弹性项目无效。使用` float `将使元素的` display `属性计为`block`。
 - `vertical-align` 对弹性项目的对齐无效。
 
+## `justify-content`
+
+
+`justify-content` 属性定义了浏览器如何分配顺着父容器主轴的弹性元素之间及其周围的空间。初始值为`normal`。
+
+**取值**
+- `start` 从行首开始排列。每行第一个元素与行首对齐，同时所有后续的元素与前一个对齐。
+-  `flex-start` 从行首开始排列。每行第一个弹性元素与行首对齐，同时所有后续的弹性元素与前一个对齐。
+-  `flex-end` 从行尾开始排列。每行最后一个弹性元素与行尾对齐，其他元素将与后一个对齐。
+-  `center` 伸缩元素向每行中点排列。每行第一个元素到行首的距离将与每行最后一个元素到行尾的距离相同。
+-  `left` 伸缩元素一个挨一个在对齐容器得左边缘，如果属性的轴与内联轴不平行，则left的行为类似于start
+-  `right`
+-  `baseline`
+-  `first baseline`
+-  `last baseline`
+-  `space-between`
+-  `space-around`
+-  `space-evenly`
+-  `stretch`
+-  `safe`
+-  `unsafe`
+
+**语法格式**
+```
+normal | <content-distribution> | <overflow-position>? [ <content-position> | left | right ]
+where 
+<content-distribution> = space-between | space-around | space-evenly | stretch
+<overflow-position> = unsafe | safe
+<content-position> = center | start | end | flex-start | flex-end
+```
+
 ## `flex-grow`：扩展比例
 
 [ɡrəʊ]
 
 `flex-grow` 属性定义弹性项目（flex item）的拉伸因子，初始值为0，`<number>`类型，负值无效。
-![flex-grow](https://lzweife.github.io/img/flex-grow.png)
+![flex-grow](http://127.0.0.1:4000/img/flex-grow.png)
 [演示地址](https://codepen.io/pen/?&editable=true)
 
 ## `flex-shrink`：收缩比例
@@ -77,7 +108,7 @@ display : inline-flex
 
 `flex-shrink` 属性指定了 flex 元素的收缩规则，初始值为1，`<number>`类型，负值无效。
 flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据` flex-shrink` 的值。
-![flex-shrink](https://lzweife.github.io/img/flex-shrink.png)
+![flex-shrink](http://127.0.0.1:4000/img/flex-shrink.png)
 [演示地址](https://codepen.io/anon/pen/MdvymX?&editable=true)
 
 ## `flex-basis`：伸缩基准值
@@ -203,7 +234,7 @@ flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其
   content: 'fill/-webkit-fill-available/-moz-available';
 }
 ```
-![flex-basis](https://lzweife.github.io/img/flex-basis.png)
+![flex-basis](http://127.0.0.1:4000/img/flex-basis.png)
 
 ## `flex`
 
@@ -265,7 +296,7 @@ flex-direction 属性指定了内部元素是如何在 flex 容器中布局的�
 - `column`：flex容器的主轴和侧轴相同。主轴起点与主轴终点和书写模式的前后点相同
 - `column-reverse`：表现和column相同，但是置换了主轴起点和主轴终点
 
-![flex-direction](https://lzweife.github.io/img/flex-direction.png)
+![flex-direction](http://127.0.0.1:4000/img/flex-direction.png)
 
 ## `flex-wrap`
 
@@ -342,7 +373,7 @@ flex 元素 被打断到多个行中。cross-start 会根据 `flex-direction` �
 }
 ```
 
-![flex-wrap](https://lzweife.github.io/img/flex-wrap.png)
+![flex-wrap](http://127.0.0.1:4000/img/flex-wrap.png)
 
 ## `flex-flow`
 
@@ -368,9 +399,20 @@ flex-flow: row nowrap;
 
 ```css
 flex: 1;
+//等价于
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 0%;
 
 flex: auto;
+//等价于
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: auto;
 
 flex-flow: row nowrap;
+//等价于
+flex-direction: row;
+flex-wrap: nowrap;
 ```
 

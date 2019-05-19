@@ -63,26 +63,32 @@ display : inline-flex
 - `float` 与 `clear` 对弹性项目无效。使用` float `将使元素的` display `属性计为`block`。
 - `vertical-align` 对弹性项目的对齐无效。
 
-## `flex-grow`
+## `flex-grow`：扩展比例
+
+[ɡrəʊ]
 
 `flex-grow` 属性定义弹性项目（flex item）的拉伸因子，初始值为0，`<number>`类型，负值无效。
 ![flex-grow](https://lzweife.github.io/img/flex-grow.png)
 [演示地址](https://codepen.io/pen/?&editable=true)
 
-## `flex-shrink`
+## `flex-shrink`：收缩比例
+
+[ʃrɪŋk]
 
 `flex-shrink` 属性指定了 flex 元素的收缩规则，初始值为1，`<number>`类型，负值无效。
 flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据` flex-shrink` 的值。
 ![flex-shrink](https://lzweife.github.io/img/flex-shrink.png)
 [演示地址](https://codepen.io/anon/pen/MdvymX?&editable=true)
 
-## `flex-basis`
+## `flex-basis`：伸缩基准值
+
+[ˈbeɪsɪs]
 
 `flex-basis` 指定了 flex 元素在主轴方向上的初始大小。
 如果不使用 `box-sizing` 来改变盒模型的话，那么这个属性就决定了 flex 元素的内容盒（content-box）的宽或高（取决于主轴的方向）的尺寸大小。
 初始值为`auto`。
 
-#### 取值
+**取值**
 - 可以是一个数字后面跟着绝对单位例如 px, mm, pt; 
 - 也可以是一个百分数，那么这个百分数就是相对于其父弹性盒容器的宽或者高（取决于主轴方向）。负值是不被允许的。
 - `auto`：基于 flex 的元素的内容自动调整大小。
@@ -240,9 +246,131 @@ CSS属性 `flex` 规定了弹性元素如何伸长或缩短以适应flex容器�
 - `none`
 元素会根据自身宽高来设置尺寸。它是完全非弹性的：既不会缩短，也不会伸长来适应 flex 容器。
 相当于将属性设置为"`flex: 0 0 auto`"。
-`<'flex-grow'>`
+ - `<'flex-grow'>`
 定义 flex 元素的 `flex-grow` 属性，详见 `<number>`。默认值为 0，负值无效。
-`<'flex-shrink'>`
+ - `<'flex-shrink'>`
 定义 flex 元素的` flex-shrink` 属性，详见 `<number>`。默认值为1，负值无效。
-`<'flex-basis'>`
+ - `<'flex-basis'>`
 定义 flex 元素的 `flex-basis` 属性。若值为0，则必须加上单位，以免被视作伸缩性。 默认值为 `auto`。
+
+
+## `flex-direction`
+
+[dəˈrekʃn]
+flex-direction 属性指定了内部元素是如何在 flex 容器中布局的，定义了主轴的方向(正方向或反方向)。初始值为	row。
+
+**取值**
+- `row`：flex容器的主轴被定义为与文本方向相同。 主轴起点和主轴终点与内容方向相同。
+- `row-reverse`：表现和row相同，但是置换了主轴起点和主轴终点
+- `column`：flex容器的主轴和侧轴相同。主轴起点与主轴终点和书写模式的前后点相同
+- `column-reverse`：表现和column相同，但是置换了主轴起点和主轴终点
+
+![flex-direction](https://lzweife.github.io/img/flex-direction.png)
+
+## `flex-wrap`
+
+[ræp]
+`flex-wrap` 指定 flex 元素单行显示还是多行显示 。如果允许换行，这个属性允许你控制行的堆叠方向。初始值为`nowrap`。
+
+**取值**
+- `nowrap`
+flex 的元素被摆放到到一行，这可能导致溢出 flex 容器。 cross-start  会根据 `flex-direction` 的值 相当于 start 或 before。
+- `wrap`
+flex 元素 被打断到多个行中。cross-start 会根据 `flex-direction` 的值选择等于start 或before。cross-end 为确定的 cross-start 的另一端。
+- `wrap-reverse`
+和 wrap 的行为一样，但是 cross-start 和 cross-end 互换。
+
+```html
+<h4>This is an example for flex-wrap:wrap </h4>
+<div class="content">
+  <div class="red">1</div>
+  <div class="green">2</div>
+  <div class="blue">3</div>
+</div>
+<h4>This is an example for flex-wrap:nowrap </h4>
+<div class="content1">
+  <div class="red">1</div>
+  <div class="green">2</div>
+  <div class="blue">3</div>
+</div>
+<h4>This is an example for flex-wrap:wrap-reverse </h4>
+<div class="content2">
+  <div class="red">1</div>
+  <div class="green">2</div>
+  <div class="blue">3</div>
+</div>
+```
+
+```css
+.content,
+.content1,
+.content2 {
+    color: #fff;
+    font: 100 24px/100px sans-serif;
+    height: 150px;
+    text-align: center;
+}
+
+.content div,
+.content1 div,
+.content2 div {
+    height: 50%;
+    width: 50%;
+}
+.red {
+    background: orangered;
+}
+.green {
+    background: yellowgreen;
+}
+.blue {
+    background: steelblue;
+}
+
+/* Flexbox Styles */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+.content1 {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.content2 {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+```
+
+![flex-wrap](https://lzweife.github.io/img/flex-wrap.png)
+
+## `flex-flow`
+
+`flex-flow` 属性是 `flex-direction` 和 `flex-wrap` 的简写。
+初始值：
+`flex-direction: row`
+`flex-wrap: nowrap`
+
+```css
+flex-flow: row nowrap;
+```
+
+## `order`
+
+`order` 属性规定了弹性容器中的可伸缩项目在布局时的顺序。
+
+元素按照 `order `属性的值的**增序**进行布局。
+
+
+拥有相同` order` 属性值的元素按照它们在源代码中出现的顺序进行布局。初始值为0。
+
+## 常见写法
+
+```css
+flex: 1;
+
+flex: auto;
+
+flex-flow: row nowrap;
+```
+

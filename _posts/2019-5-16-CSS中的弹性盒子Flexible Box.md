@@ -99,7 +99,7 @@ where
 [ɡrəʊ]
 
 `flex-grow` 属性定义弹性项目（flex item）的拉伸因子，初始值为0，`<number>`类型，负值无效。
-![flex-grow](http://127.0.0.1:4000/img/flex-grow.png)
+![flex-grow](https://lzweife.github.io/img/flex-grow.png)
 [演示地址](https://codepen.io/pen/?&editable=true)
 
 ## `flex-shrink`：收缩比例
@@ -108,7 +108,7 @@ where
 
 `flex-shrink` 属性指定了 flex 元素的收缩规则，初始值为1，`<number>`类型，负值无效。
 flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据` flex-shrink` 的值。
-![flex-shrink](http://127.0.0.1:4000/img/flex-shrink.png)
+![flex-shrink](https://lzweife.github.io/img/flex-shrink.png)
 [演示地址](https://codepen.io/anon/pen/MdvymX?&editable=true)
 
 ## `flex-basis`：伸缩基准值
@@ -234,7 +234,7 @@ flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其
   content: 'fill/-webkit-fill-available/-moz-available';
 }
 ```
-![flex-basis](http://127.0.0.1:4000/img/flex-basis.png)
+![flex-basis](https://lzweife.github.io/img/flex-basis.png)
 
 ## `flex`
 
@@ -296,7 +296,7 @@ flex-direction 属性指定了内部元素是如何在 flex 容器中布局的�
 - `column`：flex容器的主轴和侧轴相同。主轴起点与主轴终点和书写模式的前后点相同
 - `column-reverse`：表现和column相同，但是置换了主轴起点和主轴终点
 
-![flex-direction](http://127.0.0.1:4000/img/flex-direction.png)
+![flex-direction](https://lzweife.github.io/img/flex-direction.png)
 
 ## `flex-wrap`
 
@@ -373,7 +373,7 @@ flex 元素 被打断到多个行中。cross-start 会根据 `flex-direction` �
 }
 ```
 
-![flex-wrap](http://127.0.0.1:4000/img/flex-wrap.png)
+![flex-wrap](https://lzweife.github.io/img/flex-wrap.png)
 
 ## `flex-flow`
 

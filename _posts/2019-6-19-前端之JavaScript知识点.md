@@ -82,6 +82,10 @@ tags:
 - `__proto__``prototype`作为对象的内部属性，是不能被直接访问的。所以为了方便查看一个对象的原型，Firefox和Chrome中提供了`__proto__`这个非标准（不是所有浏览器都支持）的访问器。
 - `constructor`在JavaScript的原型对象中，`constructor`返回创建所有指向该原型的实例的构造函数。
 
+## 闭包
+
+
+
 
 
 

@@ -78,11 +78,16 @@ tags:
 
 **几个重要属性**
 
-- `prototype`JavaScript的对象中都包含了一个`prototype`内部属性，这个属性所对应的就是该对象的原型。
-- `__proto__``prototype`作为对象的内部属性，是不能被直接访问的。所以为了方便查看一个对象的原型，Firefox和Chrome中提供了`__proto__`这个非标准（不是所有浏览器都支持）的访问器。
-- `constructor`在JavaScript的原型对象中，`constructor`返回创建所有指向该原型的实例的构造函数。
+- `prototype`：JavaScript的对象中都包含了一个`prototype`内部属性，这个属性所对应的就是该对象的原型。
+- `__proto__`：`prototype`作为对象的内部属性，是不能被直接访问的。所以为了方便查看一个对象的原型，Firefox和Chrome中提供了`__proto__`这个非标准（不是所有浏览器都支持）的访问器。
+- `constructor`：在JavaScript的原型对象中，`constructor`返回创建所有指向该原型的实例的构造函数。
 
 ## 闭包
+**闭包是在某个作用域内定义的函数，它可以访问这个作用域内的所有变量**。闭包作用域链通常包括三个部分：
+
+- 函数本身作用域。
+- 闭包定义时的作用域。
+- 全局作用域。
 
 ## 防抖与节流
 

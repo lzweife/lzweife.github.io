@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      前端之JavaScript知识点
+title:      前端之JavaScript
 subtitle:   JavaScript知识点
 date:       2019-6-19
 author:     梦尽头

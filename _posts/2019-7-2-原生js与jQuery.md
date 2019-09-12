@@ -28,6 +28,7 @@ tags:
 
 
 - class查询
+
 ```javascript
 //jQuery
 $('.class');
@@ -137,6 +138,7 @@ if(el.parertNode) {
 ```
 
 - insertAfter：在选中元素后插入新节点
+
 ```javascript
 // jQuery
 $newEl.insertAfter(queryString);
@@ -162,6 +164,7 @@ el.matches(selector);
 ```
 
 - clone：深拷贝被选元素。（生成被选元素的副本，包含子节点、文本和属性。）
+
 ```javascript
 //jQuery
 $el.clone();
@@ -219,6 +222,7 @@ Array.prototype.forEach.call(document.querySelectorAll('.inner'),(el) => {
 ```
 
 - text设置文本
+
 ```javascript
 // jQuery
 $el.text(string);
@@ -370,6 +374,7 @@ if (document.readyState !== 'loading') {
 ## 工具判断
 
 - isArray 检测参数是不是数组。
+
 ```javascript
 
 // jQuery

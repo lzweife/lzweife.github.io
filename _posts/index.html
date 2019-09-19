@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+
+	<style>
+		.border {
+			position: relative;
+			border: none;
+		}
+
+		.border::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			background: #000;
+			width: 100%;
+			height: 1px;
+			transform: scaleY(0.5);
+			transform-origin: 0 0;
+		}
+	</style>
+</head>
+
+<body>
+<div>
+	<div class="border" style="text-align: center">
+		<p>1px边框</p>
+	</div>
+</div>
+
+</body>
+
+<script>
+    function SuperType(name){
+        this.name = name;
+        this.colors = ["red","blue","green"];
+    }
+
+    SuperType.prototype.sayName = function() {
+        alert(this.name);
+    }
+
+    function SubType(name,age){
+        // 继承属性
+        SuperType.call(this,name);
+        this.age = age;
+    }
+    //继承方法
+    SubType.prototype = new SuperType();
+    SubType.prototype.constructor = SubType;
+    SubType.prototype.sayAge = function() {
+        alert(this.age);
+    }
+
+    var instance1 = new SubType("Mike",25);
+    instance1.colors.push("black");
+    alert(instance1.colors);//red,blue,green,black
+    instance1.sayName();//Mike
+    instance1.sayAge();//25
+</script>
+
+</html>

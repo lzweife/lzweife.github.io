@@ -33,33 +33,33 @@
 
 </body>
 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script>
-    function SuperType(name){
-        this.name = name;
-        this.colors = ["red","blue","green"];
-    }
+    var Singleton = (function () {
+        var instantiated;
+        function init() {
+            /*这里定义单例代码*/
+            return {
+                publicMethod: function () {
+                    console.log('hello world');
+                },
+                publicProperty: 'test'
+            };
+        }
 
-    SuperType.prototype.sayName = function() {
-        alert(this.name);
-    }
+        return {
+            getInstance: function () {
+                if (!instantiated) {
+                    instantiated = init();
+                }
+                return instantiated;
+            }
+        };
+    })();
 
-    function SubType(name,age){
-        // 继承属性
-        SuperType.call(this,name);
-        this.age = age;
-    }
-    //继承方法
-    SubType.prototype = new SuperType();
-    SubType.prototype.constructor = SubType;
-    SubType.prototype.sayAge = function() {
-        alert(this.age);
-    }
+    /*调用公有的方法来获取实例:*/
+    Singleton.getInstance().publicMethod();
 
-    var instance1 = new SubType("Mike",25);
-    instance1.colors.push("black");
-    alert(instance1.colors);//red,blue,green,black
-    instance1.sayName();//Mike
-    instance1.sayAge();//25
 </script>
 
 </html>

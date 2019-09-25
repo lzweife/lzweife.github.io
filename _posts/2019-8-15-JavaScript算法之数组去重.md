@@ -2,7 +2,7 @@
 layout:     post
 title:      JavaScript算法之数组去重
 subtitle:   JavaScript实现数组去重的几种方式
-date:       2019-8-3
+date:       2019-8-15
 author:     梦尽头
 header-img: img/post-bg-swift.jpg
 catalog: true

@@ -115,6 +115,12 @@ function distinct6(arr) {
 function distinct7(arr = testArr) {
     return [...new Set(arr)]
 }
+
+let set = new Set([1, 1, 1, 1, 2, 3, 4, 4, 5, 3]);
+console.log(set);
+
+let array = Array.from(new Set([1, 1, 1, 2, 3, 2, 4]));
+console.log(array);
 ```
 
 

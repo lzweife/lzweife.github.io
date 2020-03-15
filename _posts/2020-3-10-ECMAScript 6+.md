@@ -3,6 +3,7 @@ layout:     post
 title:      ECMAScript 6+
 subtitle:   ECMAScript 6+知识总结
 date:       2020-3-10
+updateDate: 2020-3-15
 author:     梦尽头
 header-img: img/post-bg-swift2.jpg
 catalog: true
@@ -10,12 +11,7 @@ tags:
     - ECMAScript 6
     - JavaScript
 ---
-
-
 # 				ECMAScript 6+
-
-[TOC]
-
 
 
 ## 全局作用域
@@ -469,4 +465,182 @@ console.log(sum(2, 2, 3))
 // [2, 3]
 // 10
 ```
+
+### 箭头函数
+
+- ES5中this总是指向调用该对象的对象。
+- **箭头函数在自己的作用域内不绑定 `this`，即没有自己的 `this`，如果要使用 `this` ，就会指向定义时所在的作用域的 `this` 值**。很方便的解决了ES5中this指向复杂的问题。
+
+```js
+var test = {
+  name: 'test',
+  foo: function () {
+    console.log(this)
+    console.log(this.name)
+  },
+  bar: () => {
+    console.log(this)
+    console.log(this.name)
+  }
+}
+
+test.foo()
+// test对象
+// test
+test.bar()
+// window对象
+// 空
+```
+
+##  Object
+
+### property
+
+- 在 ES6 之前 Object 的属性必须是 key-value 形式
+- 在 ES6 之后是可以用简写的形式来声明键值对
+
+```js
+let x = 1
+let obj = {
+  x,
+  say () {
+    console.log('hello')
+  }
+}
+console.log(obj)// {x: 1, say: f}
+obj.say()// hello
+```
+
+### 对象拷贝
+
+`Object.assign()`：对象浅拷贝
+
+## Set
+
+ES6新增的数据结构，也叫集合，类似于数组，但它的每个成员都是唯一的。
+
+```js
+let s = new Set()
+```
+
+### 属性方法
+
+- `size`：Set实例的成员个数
+
+- `add(value)`：添加元素，添加重复的数据是无效的
+- `delete(value)`：刪除元素
+- `clear()`：清空Set
+- `has(value)`：判断Set的成员是否存在
+- 修改成员只能先删除后添加
+
+### 遍历
+
+- `keys()`：返回键名的遍历器
+- `values()`：返回键值的遍历器
+- `entries()`：返回键值对的遍历器
+- `foreach()`：回调函数遍历每个成员
+
+```js 
+let set = new Set(['red', 'blue', 'green'])
+
+console.log(set.keys())
+console.log(set.values())
+console.log(set.entries())
+//SetIterator {"red", "blue", "green"}
+//SetIterator {"red", "blue", "green"}
+//SetIterator {"red" => "red", "blue" => "blue", "green" => "green"}
+
+for (let item of set.values()) {
+  console.log(item)
+}
+// red bulue green
+
+for (let item of set.keys()) {
+  console.log(item)
+}
+// red bulue green
+
+for (let item of set.entries()) {
+  console.log(item)
+}
+// ["red", "red"]
+// ["blue", "blue"]
+// ["green", "green"]
+
+set.forEach((value, key) => {
+  console.log(value + '1')
+})
+// red1 blue1 green1
+```
+
+## Map
+
+又称字典。
+
+- ES5中的Object对象是一种“**字符串--值**”的键值对对应，只接受字符串作为键名。
+- ES6提供了新的数据结构Map，它是“**值--值**”的键值对对应，键名可以接受各种类型的值（甚至是对象），它比Object内容更加丰富灵活。也是一种Hash结构。
+
+```js
+let map = new Map([
+  ['name', 'Tom'],
+  [{ num: 2 }, '3']
+])
+console.log(map)
+/*
+Map(2) {"name" => "Tom", {…} => "3"}
+[[Entries]]
+0: {"name" => "Tom"}
+1: {Object => "3"}
+size: (...)
+__proto__: Map
+*/
+```
+
+### 属性方法
+
+- `size`：Map成员总数
+
+- `set(key, value)`：设置新的键值对，若已存在，则更新键值对
+- `get(key)`：获取key的键值，不存在则返回undefined
+- `has(key)`：判断key是否存在
+- `delete(key)`：删除某个键，成功返回true，否则false
+- `clear()`：清空Map
+
+### 遍历
+
+- `keys()`：返回键名的遍历器
+- `values()`：返回键值的遍历器
+- `entries()`：返回键值对的遍历器
+- `foreach()`：遍历Map所有成员
+
+```js
+const map = new Map([
+  ['F', 'no'],
+  ['T', 'yes']
+])
+
+for (let item of map.keys()) {
+  console.log(item)
+}
+// F T
+
+for (let item of map.values()) {
+  console.log(item)
+}
+// no yes
+
+for (let item of map.entries()) {
+  console.log(item)
+}
+// ['F', 'no'],
+// ['T', 'yes']
+
+map.forEach((value, key, map) => {
+  console.log(key, value)
+})
+// F no
+// T yes
+```
+
+
 

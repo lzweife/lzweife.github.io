@@ -19,11 +19,13 @@ description: "凛冬将至"
         </div>
     </a>
     <p class="post-meta">
-        更新日期：{{ post.date | date: "%Y-%m-%d" }}
+        创建日期：{{ post.date | date: "%Y-%m-%d" }}
     </p>
-    <p class="post-meta">
+    {% if post.updateDate %}
+    <p class="post-meta" style="">
         更新日期：{{ post.updateDate | date: "%Y-%m-%d" }}
     </p>
+    {% endif %}
 </div>
 <hr>
 {% endfor %}

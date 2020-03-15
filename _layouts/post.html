@@ -40,7 +40,11 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta"> 作者：{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} 发表日期：{{ page.date | date: "%Y-%m-%d" }}</span>
+                    <span class="meta">
+                        作者：{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}
+                        创建日期：{{ page.date | date: "%Y-%m-%d" }}
+                        {% if page.updateDate %}更新日期：{{ page.updateDate | date: "%Y-%m-%d" }}{% endif %}
+                    </span>
                 </div>
             </div>
         </div>

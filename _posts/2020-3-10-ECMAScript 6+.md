@@ -14,7 +14,6 @@ tags:
 # 				ECMAScript 6+
 
 
-
 ## 全局作用域
 
 在js文件最外层用`var`定义的变量为全局变量，不能用`delete`方法进行删除。
@@ -736,6 +735,74 @@ const [first, second] = map
 console.log(first, second)
 // ["first", "a"] ["second", "b"]
 ```
+
+## Promise
+
+为了解决ES5中的异步回调地狱，引入了Promise异步编程对象。
+
+ES5中的异步回调会随着业务的变更，代码的复杂度增加而变得越来越难于维护，代码可读性也会越来越差。
+
+以下是一个按顺序异步加载1.js，2.js，3.js的例子：
+
+```js
+// ES5中的异步回调地狱
+function loadScript (src, callback) {
+  let script = document.createElement('script')
+  script.src = src
+  script.onload = () => { callback(script) }
+  script.onerror = (err) => { callback(err) }
+  document.head.append(script)
+}
+
+loadScript('./1.js', function (script, error) {
+  if (error) {
+    console.log(error)
+  } else {
+    // ...
+    loadScript('./2.js', function (script, error) {
+      if (error) {
+        console.log(error)
+      } else {
+        // ...
+        loadScript('./3.js', function (script, error) {
+          if (error) {
+            console.log(error)
+          } else {
+            // ...加载所有脚本后继续 (*)
+          }
+        })
+      }
+    })
+  }
+})
+```
+
+```js
+// ES6 Promise异步编程，会使异步回调的代码非常优雅简洁
+function loadScript (src) {
+  return new Promise((resolve, reject) => {
+    let script = document.createElement('script')
+    script.src = src
+    script.onload = () => resolve(script)
+    script.onerror = (err) => reject(err)
+    document.head.append(script)
+  })
+}
+
+loadScript('1.js')
+  .then(() => {
+    return loadScript('./2.js')
+  }, (error) => {
+    console.log(error)
+  })
+  .then(() => {
+    return loadScript('./3.js')
+  }, (error) => {
+    console.log(error)
+  })
+```
+
+
 
 
 

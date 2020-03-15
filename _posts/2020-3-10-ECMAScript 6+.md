@@ -14,6 +14,7 @@ tags:
 # 				ECMAScript 6+
 
 
+
 ## 全局作用域
 
 在js文件最外层用`var`定义的变量为全局变量，不能用`delete`方法进行删除。
@@ -641,6 +642,102 @@ map.forEach((value, key, map) => {
 // F no
 // T yes
 ```
+
+## String
+
+### 字符串拼接
+
+- 字符串换行
+
+- 字符串中有变量或者表达式
+
+- 字符串中有逻辑运算
+
+  ES6的字符串模板可以很轻松的解决上述问题
+
+```js
+const str = `我是第1行
+我是第2行`
+console.log(str)
+// 我是第1行
+// 我是第2行
+
+const year = 2020
+const a = 1
+const str0 = `Hello World ${year}`
+const str1 = `Hello World ${year + a}`
+console.log(str0)// Hello World 2020
+console.log(str1)// Hello World 2021
+
+function price (strings, type) {
+  console.log(strings)
+  console.log(type)
+  let txt = ''
+  if (type === 'test') {
+    txt = '现在是2020年'
+  } else {
+    txt = '现在是2019年'
+  }
+  return `${strings[0]}${txt}${strings[1]}`
+}
+let showText = price`您好${'test'}，哈哈`
+console.log(showText)
+// ["您好", "哈哈"]
+// test
+// 您好现在是2020年，哈哈
+```
+
+## 解构赋值
+
+从复杂数据结构中提取数据，ES6新增解构赋值，减少了层层寻找对象成员的冗余代码。**解构赋值支持所有可遍历的对象**，如`String，Array，Object，Set，Map`等。
+
+```js
+// String
+const str = 'abcd'
+const [first, second] = str
+console.log(first, second)// a b
+
+// Array
+const arr = ['hello', 'world', '2020']
+const [first, second, ...last] = arr
+console.log(first, second, last)// hello world ["2020"]
+
+// Object
+const obj = {
+  firstName: 'hello',
+  secondName: 'world',
+  third: '2020',
+  size: {
+    width: 100,
+    height: 200
+  },
+  say () {
+    console.log(`${this.firstName} ${this.secondName} ${this.third}`)
+  }
+}
+// ps： 变量名要和对象的键名保持一致，否则返回undefined
+const { firstName, secondName, size: { width }, ...last } = obj
+console.log(firstName, secondName, width, last)
+obj.say()
+// hello world 100 {third: "2020", say: ƒ}
+// hello world 2020
+
+// Set
+const set = new Set([1, 2, 3, 4])
+const [first, second] = set
+console.log(first, second)// 1 2
+
+// Map
+const map = new Map([
+  ['first', 'a'],
+  ['second', 'b']
+])
+const [first, second] = map
+console.log(first, second)
+// ["first", "a"] ["second", "b"]
+```
+
+
 
 
 
